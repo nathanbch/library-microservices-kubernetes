@@ -1,0 +1,21 @@
+services:
+  bookservice:
+    build: ./bookservice
+    container_name: bookservice
+    ports:
+      - "8080:8080"
+
+  userservice:
+    build: ./userservice
+    container_name: userservice
+    ports:
+      - "8081:8081"
+
+  apigateway:
+    build: ./apigateway
+    container_name: apigateway
+    ports:
+      - "8082:8082"
+    depends_on:
+      - bookservice
+      - userservice
